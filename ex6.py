@@ -8,6 +8,7 @@ import mechanicalsoup
 
 # 1
 browser = mechanicalsoup.Browser()
+base_url = "http://olympus.realpython.org"
 url = "http://olympus.realpython.org/login"
 login_page = browser.get(url)
 login_html = login_page.soup
@@ -36,4 +37,10 @@ profiles_page = browser.submit(form, login_page.url)
 
 # se a requisição da certo, ela faz o login e a url que aparece é a que foi redirecionada
 # se a requisição da errado, ela não faz o login e a url que aparece é a mesma da url de login
-print(profiles_page.url)
+# print(profiles_page.url)
+
+links = profiles_page.soup.select("a")
+for link in links:
+    address = base_url + link["href"]
+    text = link.text
+    print(f"{text}: {address}")
