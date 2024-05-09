@@ -1,2 +1,3 @@
-python -m ensurepip --upgrade
-python -m pip install MechanicalSoup
+sudo apt install python3-pip
+pip install MechanicalSoup
+pip install beautifulsoup4
